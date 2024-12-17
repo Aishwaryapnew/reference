@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>References Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<h1>References Table</h1>
+
+<form method="POST" action="/references/reference_insert/">
+    {% csrf_token %}
+    <input type="text" name="reference" placeholder="Enter Full Reference" required>
+
+    <input type="text" name="coursecode" placeholder=" enter the Cousecode" required>
+
+    <input type="text" name="academic_yr" placeholder="Enter Academic year" required>
+    <button type="submit">Add Reference</button>
+    
+</form>
+
+    <tbody>
+        {% for reference in references %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ reference.reference_text }}</td>
+            <td>{{ coursecode.coursecode_text }}</td>
+            <td>{{ academic_yr.academic_yr_text }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
